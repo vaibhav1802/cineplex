@@ -2,11 +2,12 @@ import React from "react"
 import Head from "next/head"
 import styled from "styled-components"
 import fetch from "isomorphic-fetch"
+import FeaturedCarousel from "components/collection/FeaturedCarousel/FeaturedCarousel.component"
 import MediaCarousel from "components/collection/MediaCarousel/MediaCarousel.component"
 import "@/styles/global"
 import {
   NOW_PLAYING_URL,
-  TOP_RATE_URL,
+  TOP_RATED_URL,
   UPCOMING_URL,
   TV_TOP_RATED_URL
 } from "api_config"
@@ -18,24 +19,24 @@ export default class Storefront extends React.PureComponent {
     try {
       const [
         RESP_NOW_PLAYING,
-        RESP_TOP_RATE,
+        RESP_TOP_RATED,
         RESP_UPCOMING,
         RESP_TV_TOP_RATED
       ] = await Promise.all([
         fetch(NOW_PLAYING_URL),
-        fetch(TOP_RATE_URL),
+        fetch(TOP_RATED_URL),
         fetch(UPCOMING_URL),
         fetch(TV_TOP_RATED_URL)
       ])
 
       const json_now_playing = await RESP_NOW_PLAYING.json()
-      const json_top_rate = await RESP_TOP_RATE.json()
+      const json_top_rated = await RESP_TOP_RATED.json()
       const json_upcoming = await RESP_UPCOMING.json()
       const json_tv_top_rated = await RESP_TV_TOP_RATED.json()
 
       return {
         nowPlayingCollection: json_now_playing.results,
-        topRateCollection: json_top_rate.results,
+        topRatedCollection: json_top_rated.results,
         upcomingCollection: json_upcoming.results,
         tvTopRatedCollection: json_tv_top_rated.results
       }
@@ -47,7 +48,7 @@ export default class Storefront extends React.PureComponent {
   render() {
     const {
       nowPlayingCollection,
-      topRateCollection,
+      topRatedCollection,
       upcomingCollection,
       tvTopRatedCollection
     } = this.props
@@ -58,6 +59,12 @@ export default class Storefront extends React.PureComponent {
           <title>CINEPLEX STOREFRONT</title>
         </Head>
         <SplashPageWrapper>
+          {/* Featured Carousel Collection */}
+          {topRatedCollection && topRatedCollection.length > 0 && (
+            <FeaturedCarousel results={topRatedCollection} type={"movie"} />
+          )}
+
+          {/* Other category movie and tv collection */}
           {nowPlayingCollection && nowPlayingCollection.length > 0 ? (
             <MediaCarousel
               type={"movie"}
@@ -68,7 +75,7 @@ export default class Storefront extends React.PureComponent {
           ) : (
             <div>Loading Icon</div>
           )}
-          {topRateCollection && topRateCollection.length > 0 ? (
+          {/* {topRateCollection && topRateCollection.length > 0 ? (
             <MediaCarousel
               type={"movie"}
               results={topRateCollection}
@@ -77,7 +84,7 @@ export default class Storefront extends React.PureComponent {
             />
           ) : (
             <div>Loading Icon</div>
-          )}
+          )} */}
           {upcomingCollection && upcomingCollection.length > 0 ? (
             <MediaCarousel
               type={"movie"}

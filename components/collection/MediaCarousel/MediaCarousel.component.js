@@ -40,7 +40,7 @@ const MediaCarousel = (props) => {
   const getAnchorContent = (title) => {
     return (
       <Styled.CollectionTitle>
-        {title}
+        <h3>{title}</h3>
         <Styled.ExploreAll className={hoverClass}>
           Explore All{" "}
           <Styled.ChevronWrapper>
