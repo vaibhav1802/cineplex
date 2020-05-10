@@ -16,6 +16,11 @@ export const AnchorWrapper = styled.span``
 
 export const CollectionTitle = styled.div``
 
+export const CarouselTitle = styled.h3`
+  display: inline-block;
+  margin: 0;
+`
+
 export const ExploreAll = styled.span`
   display: inline-block;
   vertical-align: middle;
