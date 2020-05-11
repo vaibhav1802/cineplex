@@ -75,16 +75,6 @@ export default class Storefront extends React.PureComponent {
           ) : (
             <div>Loading Icon</div>
           )}
-          {/* {topRateCollection && topRateCollection.length > 0 ? (
-            <MediaCarousel
-              type={"movie"}
-              results={topRateCollection}
-              title="Top Rate"
-              collection="top_rated"
-            />
-          ) : (
-            <div>Loading Icon</div>
-          )} */}
           {upcomingCollection && upcomingCollection.length > 0 ? (
             <MediaCarousel
               type={"movie"}
