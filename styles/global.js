@@ -2,12 +2,29 @@ import { injectGlobal } from "styled-components"
 import { font, breakpoint, colour } from "./variables"
 
 injectGlobal`
+
+  @font-face {
+    font-family: "Lato Bold";
+    src: url("/static/fonts/Lato-Bold") format("ttf");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "Lato Black";
+    src: url("/static/fonts/Lato-Black") format("ttf");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "Lato Light";
+    src: url("/static/fonts/Lato-Light") format("ttf");
+    font-weight: 200;
+  }
+
   html,
   body {
     font-weight: ${font.weight.book};
     line-height: 1.5625;
     font-size: ${font.size.desktop.base};
-    font-family: "SamsungOne", "SamsungSharpSans", sans-serif;
+    font-family: "Lato", sans-serif;
     height: 100%;
     width: 100%;
     padding: 0;
@@ -69,5 +86,13 @@ injectGlobal`
     clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
     border: 0 !important;
+  }
+
+  .storefront-loading {
+    padding: 0 4%;
+    margin: 3vw 0;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
   }
 `

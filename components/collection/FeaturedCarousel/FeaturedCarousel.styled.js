@@ -38,7 +38,7 @@ export const FeatureMediaInfo = styled.div`
 export const MediaInfoRating = styled.span`
   display: inline-block;
   padding: 5px;
-  border: 1px solid #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 `
 
 export const MoreInfo = styled.div`

@@ -1,4 +1,3 @@
-import React from "react"
 import * as Styled from "./Button.styled"
 
 const Button = (props) => {

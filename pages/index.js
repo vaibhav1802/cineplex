@@ -28,12 +28,10 @@ export default class Storefront extends React.PureComponent {
         fetch(UPCOMING_URL),
         fetch(TV_TOP_RATED_URL)
       ])
-
       const json_now_playing = await RESP_NOW_PLAYING.json()
       const json_top_rated = await RESP_TOP_RATED.json()
       const json_upcoming = await RESP_UPCOMING.json()
       const json_tv_top_rated = await RESP_TV_TOP_RATED.json()
-
       return {
         nowPlayingCollection: json_now_playing.results,
         topRatedCollection: json_top_rated.results,
@@ -58,6 +56,7 @@ export default class Storefront extends React.PureComponent {
         <Head>
           <title>CINEPLEX STOREFRONT</title>
         </Head>
+
         <SplashPageWrapper>
           {/* Featured Carousel Collection */}
           {topRatedCollection && topRatedCollection.length > 0 && (
@@ -73,7 +72,7 @@ export default class Storefront extends React.PureComponent {
               collection="now_playing"
             />
           ) : (
-            <div>Loading Icon</div>
+            <div className="storefront-loading">Loading Icon</div>
           )}
           {upcomingCollection && upcomingCollection.length > 0 ? (
             <MediaCarousel
@@ -83,7 +82,7 @@ export default class Storefront extends React.PureComponent {
               collection="upcoming"
             />
           ) : (
-            <div>Loading Icon</div>
+            <div className="storefront-loading">Loading Icon</div>
           )}
           {tvTopRatedCollection && tvTopRatedCollection.length > 0 ? (
             <MediaCarousel
@@ -93,7 +92,7 @@ export default class Storefront extends React.PureComponent {
               collection="top_rated"
             />
           ) : (
-            <div>Loading Icon</div>
+            <div className="storefront-loading">Loading Icon</div>
           )}
         </SplashPageWrapper>
       </>

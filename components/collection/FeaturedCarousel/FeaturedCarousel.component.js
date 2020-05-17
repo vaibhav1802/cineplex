@@ -1,4 +1,3 @@
-import React from "react"
 import Swiper from "react-id-swiper"
 import * as Styled from "./FeaturedCarousel.styled"
 import AnchorLink from "components/elements/AnchorLink/AnchorLink.component"
@@ -38,7 +37,7 @@ const FeaturedCarousel = (props) => {
                 backgroundImage={`https://image.tmdb.org/t/p/w1280/${mediaItem.poster_path}`}
               ></Styled.FeaturedImage>
               <Styled.FeatureMediaInfo>
-                <h1>{mediaItem.title}</h1>
+                <h2>{mediaItem.title}</h2>
                 <p>{TruncateText(mediaItem.overview)}</p>
                 {mediaItem.vote_average && (
                   <div>
@@ -48,7 +47,7 @@ const FeaturedCarousel = (props) => {
                     </Styled.MediaInfoRating>
                   </div>
                 )}
-                <AnchorLink path={`${type}/${mediaItem.id}`}>
+                <AnchorLink type={type} id={mediaItem.id}>
                   <Button>
                     <Styled.MoreInfo>
                       <IconInformation width={16} height={16} />

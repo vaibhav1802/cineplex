@@ -1,4 +1,3 @@
-import React from "react"
 import AnchorLink from "components/elements/AnchorLink/AnchorLink.component"
 import * as Styled from "./MediaTile.styled"
 
@@ -15,11 +14,13 @@ export default class MediaTile extends React.PureComponent {
   }
 
   render() {
-    const { id, poster_path, title, type } = this.props
+    const { id, poster_path, title, type, sameMediaType } = this.props
     return (
       <Styled.MediaTileWrapper>
         <AnchorLink
-          path={`/${type}/${id}`}
+          id={id}
+          type={type}
+          sameMediaType={sameMediaType}
           children={this.getContent(poster_path, title)}
         ></AnchorLink>
       </Styled.MediaTileWrapper>

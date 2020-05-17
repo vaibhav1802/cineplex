@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import Swiper from "react-id-swiper"
 import MediaTile from "components/elements/MediaTile/MediaTile.component"
 import "@/styles/swiper"
@@ -19,10 +19,12 @@ const getParamForSlider = () => {
       },
       1024: {
         slidesPerView: 7,
+        slidesPerGroup: 7,
         spaceBetween: 10
       },
       1200: {
-        slidesPerView: 8
+        slidesPerView: 8,
+        slidesPerGroup: 8
       }
     },
     navigation: {
@@ -35,23 +37,24 @@ const getParamForSlider = () => {
 const MediaCarousel = (props) => {
   const [swiper, updateSwiper] = useState(null)
   const [hoverClass, updateClass] = useState("hide")
-  const { title, collection, type } = props
+  const { title, collection, type, disableHover, sameMediaType } = props
 
   const getAnchorContent = (title) => {
     return (
       <Styled.CollectionTitle>
-        <Styled.CarouselTitle>{title}</Styled.CarouselTitle>
-        <Styled.ExploreAll className={hoverClass}>
-          Explore All{" "}
-          <Styled.ChevronWrapper>
-            <IconChevron width={12} height={12} />
-          </Styled.ChevronWrapper>
-        </Styled.ExploreAll>
+        {title && <Styled.CarouselTitle>{title}</Styled.CarouselTitle>}
+
+        {!disableHover && (
+          <Styled.ExploreAll className={hoverClass}>
+            Explore All{" "}
+            <Styled.ChevronWrapper>
+              <IconChevron width={12} height={12} />
+            </Styled.ChevronWrapper>
+          </Styled.ExploreAll>
+        )}
       </Styled.CollectionTitle>
     )
   }
-  // if (swiper !== null) {
-  // }
 
   return (
     <Styled.MediaCarouselWrapper>
@@ -60,10 +63,14 @@ const MediaCarousel = (props) => {
           onMouseEnter={() => updateClass("showInfo")}
           onMouseLeave={() => updateClass("hide")}
         >
-          <AnchorLink
-            children={getAnchorContent(title)}
-            path={`collection/${type}/${collection}`}
-          />
+          {type && collection ? (
+            <AnchorLink
+              children={getAnchorContent(title)}
+              path={`collection/${type}/${collection}`}
+            />
+          ) : (
+            getAnchorContent(title)
+          )}
         </Styled.AnchorWrapper>
       </Styled.MediaTitle>
       <Styled.MediaContent>
@@ -71,7 +78,11 @@ const MediaCarousel = (props) => {
           {props.results.length > 0 &&
             props.results.map((mediaItem, index) => (
               <Styled.MediaItem key={index}>
-                <MediaTile {...mediaItem} type={type} />
+                <MediaTile
+                  {...mediaItem}
+                  type={type}
+                  sameMediaType={sameMediaType}
+                />
               </Styled.MediaItem>
             ))}
         </Swiper>
