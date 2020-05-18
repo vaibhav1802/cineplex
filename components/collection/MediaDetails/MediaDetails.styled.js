@@ -96,3 +96,30 @@ export const EmptyPoster = styled.div`
   align-items: center;
   text-align: center;
 `
+
+export const MediaDetailsBtnWrapper = styled.div`
+  display: flex;
+  button {
+    margin-right: 20px;
+  }
+`
+
+export const TrailerWrapper = styled.div`
+  position: relative;
+  max-width: 100%;
+  height: 0;
+  overflow: hidden;
+  background: #000;
+  padding-bottom: 56.25%;
+  margin-top: 20px;
+  iframe {
+    position: absolute;
+    border: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+  }
+`

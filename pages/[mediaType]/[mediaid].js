@@ -9,6 +9,7 @@ const MediaDetailsPage = (props) => {
   const { query } = router
   const [mediaData, setMediaData] = useState(null)
   const [similarMediaCollection, setSimilarMediaCollection] = useState([])
+  const [mediaVideos, setMediaVideos] = useState(null)
   const mediaType = query.mediaType
   const mediaId = query.mediaid
 
@@ -33,9 +34,20 @@ const MediaDetailsPage = (props) => {
       }
     }
 
+    async function loadMediaVideos() {
+      if (mediaType && mediaId) {
+        const RESP_MEDIA_VIDEOS = await fetch(
+          `${BASE_API_URL}${mediaType}/${mediaId}/videos?api_key=${API_KEY}`
+        )
+        const json_media_videos = await RESP_MEDIA_VIDEOS.json()
+        setMediaVideos(json_media_videos)
+      }
+    }
+
     if (!props.mediaData?.id) {
       loadMediaDetails()
       loadSimilarMedia()
+      loadMediaVideos()
     }
   }, [])
 
@@ -45,6 +57,7 @@ const MediaDetailsPage = (props) => {
         type={mediaType}
         mediaData={mediaData}
         similarMediaCollection={similarMediaCollection}
+        mediaVideos={mediaVideos?.results}
       />
     )
   }
