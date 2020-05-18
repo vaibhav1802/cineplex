@@ -12,3 +12,12 @@ export const HeaderWrapper = styled.header`
     font-weight: 700;
   }
 `
+
+export const HeaderLink = styled.div`
+  a {
+    margin-left: 30px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+  }
+`
