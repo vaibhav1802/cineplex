@@ -85,7 +85,8 @@ const MediaDetails = (props) => {
         id: id,
         backdrop_path: backdrop_path,
         poster_path: poster_path,
-        mediaType: type
+        mediaType: type,
+        title: type === "movie" ? title : name
       })
       addMediaItemInList(true)
     } else {

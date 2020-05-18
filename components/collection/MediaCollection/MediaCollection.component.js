@@ -1,8 +1,8 @@
-import Link from "next/link"
 import * as Styled from "./MediaCollection.styled"
 import { formatCollectionName } from "utilities/mediaDataParsing"
 import Button from "components/elements/Button/Button.component"
 import { IconChevron } from "components/elements/Icon/Icon.component"
+import GridMediaTile from "components/elements/GridMediaTile/GridMediaTile.component"
 
 const MediaCollection = (props) => {
   const {
@@ -19,22 +19,13 @@ const MediaCollection = (props) => {
       <Styled.CollectionTitle>
         {formatCollectionName(collectionId)} COLLECTION
       </Styled.CollectionTitle>
-      <Styled.MediaCollectionContainer>
-        {mediaCollectionData?.length > 0 &&
-          mediaCollectionData.map((mediaItem, index) => (
-            <Styled.MediaTile key={index}>
-              <Link
-                href={`/[mediaType]/[mediaid]`}
-                as={`/${mediaType}/${mediaItem.id}`}
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/w200/${mediaItem.poster_path}`}
-                  alt={mediaItem.title}
-                />
-              </Link>
-            </Styled.MediaTile>
-          ))}
-      </Styled.MediaCollectionContainer>
+      {mediaCollectionData?.length > 0 && (
+        <GridMediaTile
+          mediaCollectionData={mediaCollectionData}
+          mediaType={mediaType}
+        />
+      )}
+
       {pageNumber < totalPages && (
         <Styled.LoadMoreBtn>
           <Button onClickHandler={loadMediaCollection}>
