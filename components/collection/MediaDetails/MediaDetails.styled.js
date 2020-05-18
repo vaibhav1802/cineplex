@@ -58,7 +58,7 @@ export const MediaMoreInfo = styled.div`
   }
 `
 export const MediaInfo = styled.div`
-  margin: 3vw;
+  margin: 4%;
   @media (min-width: ${breakpoint.min.large}) {
     display: flex;
   }

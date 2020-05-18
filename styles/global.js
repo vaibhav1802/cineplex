@@ -46,6 +46,7 @@ injectGlobal`
 
   a {
     cursor: pointer;
+    text-decoration: none;
   }
 
   #__next,

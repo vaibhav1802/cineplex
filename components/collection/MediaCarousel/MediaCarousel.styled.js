@@ -14,7 +14,19 @@ export const MediaItem = styled.div``
 
 export const AnchorWrapper = styled.span``
 
-export const CollectionTitle = styled.div``
+export const CollectionTitle = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const CarouselSubtitle = styled.span`
+  font-size: 14px;
+  a {
+    color: #fff;
+  }
+`
 
 export const CarouselTitle = styled.h3`
   display: inline-block;

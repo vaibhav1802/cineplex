@@ -1,5 +1,6 @@
+import Head from "next/head"
 import * as Styled from "./MediaDetails.styled"
-import { getReleaseYear, getRunTime } from "utils/mediaDataParsing"
+import { getReleaseYear, getRunTime } from "utilities/mediaDataParsing"
 import MediaCarousel from "components/collection/MediaCarousel/MediaCarousel.component"
 
 const MediaDetails = (props) => {
@@ -17,6 +18,7 @@ const MediaDetails = (props) => {
     seasons,
     episode_run_time
   } = props.mediaData
+  console.log(episode_run_time)
 
   const { similarMediaCollection, type } = props
 
@@ -55,6 +57,9 @@ const MediaDetails = (props) => {
 
   return (
     <>
+      <Head>
+        <title>CINEPLEX DETAILS PAGE</title>
+      </Head>
       <Styled.MediaTopContainer>
         <Styled.MediaPoster
           backgroundImage={`https://image.tmdb.org/t/p/w1280/${
@@ -73,15 +78,16 @@ const MediaDetails = (props) => {
           ) : null}
           {episode_run_time?.length > 0 && (
             <Styled.EpisodeRuntime>
-              Episode Run time: {getRunTime(episode_run_time)}
+              Episode Run time: {getRunTime(episode_run_time[0])}
             </Styled.EpisodeRuntime>
           )}
 
           <p>{overview}</p>
         </Styled.MediaOverView>
         <Styled.MediaMoreInfo>
-          <span>Rating: {vote_average}</span>
-          {spoken_languages && (
+          {vote_average > 0 && <span>Rating: {vote_average}</span>}
+
+          {spoken_languages?.length > 0 && (
             <div>
               Language:{" "}
               {spoken_languages?.length > 0 && getLanguages(spoken_languages)}

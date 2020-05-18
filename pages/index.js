@@ -70,6 +70,7 @@ export default class Storefront extends React.PureComponent {
               results={nowPlayingCollection}
               title="Now Playing"
               collection="now_playing"
+              subTitle={"View All"}
             />
           ) : (
             <div className="storefront-loading">Loading Icon</div>
@@ -80,6 +81,7 @@ export default class Storefront extends React.PureComponent {
               results={upcomingCollection}
               title="Upcoming"
               collection="upcoming"
+              subTitle={"View All"}
             />
           ) : (
             <div className="storefront-loading">Loading Icon</div>
@@ -90,6 +92,7 @@ export default class Storefront extends React.PureComponent {
               results={tvTopRatedCollection}
               title="Top Rated TV Shows"
               collection="top_rated"
+              subTitle={"View All"}
             />
           ) : (
             <div className="storefront-loading">Loading Icon</div>

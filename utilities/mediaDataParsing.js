@@ -19,3 +19,7 @@ export const getRunTime = (totalMinutes) => {
     }
   }
 }
+
+export const formatCollectionName = (collectionId) => {
+  return collectionId.toUpperCase().replace("_", " ")
+}

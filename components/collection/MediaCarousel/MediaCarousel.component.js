@@ -5,6 +5,7 @@ import "@/styles/swiper"
 import * as Styled from "./MediaCarousel.styled"
 import AnchorLink from "components/elements/AnchorLink/AnchorLink.component"
 import { IconChevron } from "components/elements/Icon/Icon.component"
+import Link from "next/link"
 
 const getParamForSlider = () => {
   return {
@@ -37,20 +38,41 @@ const getParamForSlider = () => {
 const MediaCarousel = (props) => {
   const [swiper, updateSwiper] = useState(null)
   const [hoverClass, updateClass] = useState("hide")
-  const { title, collection, type, disableHover, sameMediaType } = props
+  const {
+    title,
+    collection,
+    type,
+    disableHover,
+    sameMediaType,
+    subTitle
+  } = props
 
   const getAnchorContent = (title) => {
     return (
       <Styled.CollectionTitle>
-        {title && <Styled.CarouselTitle>{title}</Styled.CarouselTitle>}
+        {title && (
+          <Styled.CarouselTitle>
+            {title}
 
-        {!disableHover && (
-          <Styled.ExploreAll className={hoverClass}>
-            Explore All{" "}
-            <Styled.ChevronWrapper>
-              <IconChevron width={12} height={12} />
-            </Styled.ChevronWrapper>
-          </Styled.ExploreAll>
+            {!disableHover && (
+              <Styled.ExploreAll className={hoverClass}>
+                Explore All{" "}
+                <Styled.ChevronWrapper>
+                  <IconChevron width={12} height={12} />
+                </Styled.ChevronWrapper>
+              </Styled.ExploreAll>
+            )}
+          </Styled.CarouselTitle>
+        )}
+        {subTitle && (
+          <Styled.CarouselSubtitle>
+            <Link
+              href={`collection/[mediaType]/[mediaid]`}
+              as={`collection/${type}/${collection}`}
+            >
+              <a>{subTitle}</a>
+            </Link>
+          </Styled.CarouselSubtitle>
         )}
       </Styled.CollectionTitle>
     )
@@ -64,10 +86,12 @@ const MediaCarousel = (props) => {
           onMouseLeave={() => updateClass("hide")}
         >
           {type && collection ? (
-            <AnchorLink
-              children={getAnchorContent(title)}
-              path={`collection/${type}/${collection}`}
-            />
+            <Link
+              href={`collection/[mediaType]/[mediaid]`}
+              as={`collection/${type}/${collection}`}
+            >
+              {getAnchorContent(title)}
+            </Link>
           ) : (
             getAnchorContent(title)
           )}
