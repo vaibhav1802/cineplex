@@ -17,21 +17,13 @@ export default class MyDocument extends Document {
       <html lang="en">
         <Head>
           {/* Font Preload */}
-          <link
-            as="font"
-            crossOrigin="anonymous"
-            rel="preload"
-            href=""
-          />
-        
+          <link as="font" crossOrigin="anonymous" rel="preload" href="" />
+
           {/* Favicon */}
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="" />
           <meta name="msapplication-TileColor" content="#ffffff" />
-          <meta
-            name="msapplication-TileImage"
-            content=""
-          />
+          <meta name="msapplication-TileImage" content="" />
           <meta name="theme-color" content="#ffffff" />
           {this.props.styleTags}
         </Head>
