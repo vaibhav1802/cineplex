@@ -1,23 +1,23 @@
-import { useState, useRef } from "react"
 import * as Styled from "./InputSearchBar.styled"
 import { IconSearch } from "components/elements/Icon/Icon.component"
 const InputSearchBar = (props) => {
-  const { inputValue, onChangeSearchInput, onIconCloseClick } = props
-  const [isInputFieldShown, showInputField] = useState(false)
-  const inputRef = useRef()
-
-  const onSearchIconClick = () => {
-    if (inputValue === "") {
-      showInputField(!isInputFieldShown)
-      inputRef?.current?.focus()
-    }
-  }
+  const {
+    inputValue,
+    onChangeSearchInput,
+    onIconCloseClick,
+    onSearchIconClick,
+    isInputFieldShown,
+    inputRef
+  } = props
 
   return (
     <Styled.InputSearchBarWrapper
       className={isInputFieldShown ? "show-border" : ""}
     >
-      <Styled.SearchIconWrapper onClick={() => onSearchIconClick()}>
+      <Styled.SearchIconWrapper
+        className={isInputFieldShown ? "show-search-icon" : ""}
+        onClick={() => onSearchIconClick()}
+      >
         <IconSearch width={25} height={25} />
       </Styled.SearchIconWrapper>
 

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { breakpoint } from "styles/variables"
 
 export const InputSearchBarWrapper = styled.div`
   display: flex;
@@ -8,12 +9,19 @@ export const InputSearchBarWrapper = styled.div`
   }
 `
 export const SearchIconWrapper = styled.span`
-  display: inline-block;
-  cursor: pointer;
+  display: none;
+
+  @media (min-width: ${breakpoint.min.medium}) {
+    display: inline-block;
+    cursor: pointer;
+  }
   svg {
     position: relative;
     top: 6px;
     left: 10px;
+  }
+  &.show-search-icon {
+    display: inline-block;
   }
 `
 export const TextInput = styled.input`
@@ -28,8 +36,11 @@ export const TextInput = styled.input`
   transition: all 0.3s ease-out;
   &.show-input {
     opacity: 1;
-    width: 200px;
+    width: 80%;
     transition: all 0.3s ease-in;
+    @media (min-width: ${breakpoint.min.medium}) {
+      width: 200px;
+    }
   }
 `
 

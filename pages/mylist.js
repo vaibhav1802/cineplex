@@ -13,7 +13,9 @@ const MyList = () => {
   }, [])
   return (
     <Layout>
-      {myListCollection?.length > 0 && <h3>Your list</h3>}
+      {myListCollection?.length > 0 && (
+        <h4 style={{ marginTop: 0 }}>Your list</h4>
+      )}
       <GridMediaTile
         mediaCollectionData={myListCollection}
         customMessage={"Your list is empty."}
