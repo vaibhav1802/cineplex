@@ -3,7 +3,6 @@ import Swiper from "react-id-swiper"
 import MediaTile from "components/elements/MediaTile/MediaTile.component"
 import "@/styles/swiper"
 import * as Styled from "./MediaCarousel.styled"
-import AnchorLink from "components/elements/AnchorLink/AnchorLink.component"
 import { IconChevron } from "components/elements/Icon/Icon.component"
 import Link from "next/link"
 

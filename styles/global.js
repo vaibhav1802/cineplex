@@ -57,6 +57,7 @@ injectGlobal`
 
   #__next {
     min-height: 100vh;
+    position: relative;
   }
 
   * {
@@ -101,4 +102,13 @@ injectGlobal`
 
 export const Layout = styled.div`
   padding: 1% 4%;
+`
+export const EmptyPoster = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid #fff;
 `

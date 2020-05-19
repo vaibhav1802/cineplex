@@ -4,6 +4,7 @@ import styled from "styled-components"
 import fetch from "isomorphic-fetch"
 import FeaturedCarousel from "components/collection/FeaturedCarousel/FeaturedCarousel.component"
 import MediaCarousel from "components/collection/MediaCarousel/MediaCarousel.component"
+import Footer from "components/elements/Footer/Footer.component"
 import "@/styles/global"
 import {
   NOW_PLAYING_URL,
@@ -14,6 +15,7 @@ import {
 
 const SplashPageWrapper = styled.div``
 
+// This is home page for the app
 export default class Storefront extends React.PureComponent {
   static async getInitialProps({ req }) {
     try {
@@ -96,6 +98,7 @@ export default class Storefront extends React.PureComponent {
           ) : (
             <div className="storefront-loading">Loading Icon</div>
           )}
+          <Footer />
         </SplashPageWrapper>
       </>
     )

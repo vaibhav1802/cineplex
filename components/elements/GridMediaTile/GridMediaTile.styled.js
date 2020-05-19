@@ -22,13 +22,3 @@ export const MediaTile = styled.div`
     width: calc(100% / 6);
   }
 `
-
-export const EmptyPoster = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  border: 1px solid #fff;
-`

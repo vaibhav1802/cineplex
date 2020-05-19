@@ -1,6 +1,6 @@
 import * as Styled from "./GridMediaTile.styled"
 import Link from "next/link"
-
+import { EmptyPoster } from "styles/global"
 const GridMediaTile = (props) => {
   const {
     mediaCollectionData,
@@ -28,9 +28,9 @@ const GridMediaTile = (props) => {
                   alt={mediaItem.title || mediaItem.name}
                 />
               ) : (
-                <Styled.EmptyPoster>
+                <EmptyPoster>
                   No poster available for {mediaItem.title || mediaItem.name}
-                </Styled.EmptyPoster>
+                </EmptyPoster>
               )}
             </Link>
           </Styled.MediaTile>

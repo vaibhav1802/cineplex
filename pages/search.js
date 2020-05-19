@@ -5,6 +5,7 @@ import { useRouter } from "next/router"
 import { BASE_API_URL, API_KEY } from "api_config"
 import { Layout } from "styles/global"
 import { debounce } from "lodash"
+import Head from "next/head"
 
 const SearchResults = () => {
   const [resultData, setResultData] = useState([])
@@ -38,20 +39,25 @@ const SearchResults = () => {
   }, [encodedQueryString])
 
   return (
-    <Layout>
-      <h3>
-        Search Results{" "}
-        {`${resultData.length > 0 ? `for ${query.keyword}` : ""}`}
-      </h3>
+    <>
+      <Head>
+        <title>CINEPLEX SEARCH</title>
+      </Head>
+      <Layout>
+        <h3>
+          Search Results{" "}
+          {`${resultData.length > 0 ? `for ${query.keyword}` : ""}`}
+        </h3>
 
-      {resultData.length > 0 && (
-        <GridMediaTile
-          readMediaFromResult={true}
-          mediaCollectionData={resultData}
-          customMessage={"Your list is empty."}
-        />
-      )}
-    </Layout>
+        {resultData.length > 0 && (
+          <GridMediaTile
+            readMediaFromResult={true}
+            mediaCollectionData={resultData}
+            customMessage={"Your list is empty."}
+          />
+        )}
+      </Layout>
+    </>
   )
 }
 

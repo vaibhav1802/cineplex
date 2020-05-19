@@ -4,6 +4,7 @@ import { BASE_API_URL, API_KEY } from "api_config"
 import { useRouter } from "next/router"
 import MediaCollection from "components/collection/MediaCollection/MediaCollection.component"
 
+// This is a collection page for showing either tv or movies collection like upcoming, featured etc
 const MediaCollectionPage = (props) => {
   const router = useRouter()
   const { query } = router

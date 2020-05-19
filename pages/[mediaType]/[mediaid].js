@@ -4,6 +4,7 @@ import { BASE_API_URL, API_KEY } from "api_config"
 import { useRouter } from "next/router"
 import MediaDetails from "components/collection/MediaDetails/MediaDetails.component"
 
+// This page is for showing media details for tv and movie item based on unique id
 const MediaDetailsPage = (props) => {
   const router = useRouter()
   const { query } = router
