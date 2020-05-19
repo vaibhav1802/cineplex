@@ -111,7 +111,6 @@ export const TrailerWrapper = styled.div`
   overflow: hidden;
   background: #000;
   padding-bottom: 56.25%;
-  margin-top: 20px;
   iframe {
     position: absolute;
     border: none;
@@ -121,5 +120,8 @@ export const TrailerWrapper = styled.div`
     left: 0;
     margin: 0;
     padding: 0;
+    @media (min-width: ${breakpoint.min.large}) {
+      height: 70vh;
+    }
   }
 `

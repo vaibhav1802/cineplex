@@ -1,5 +1,6 @@
 import { injectGlobal } from "styled-components"
 import { font, breakpoint, colour } from "./variables"
+import styled from "styled-components"
 
 injectGlobal`
 
@@ -96,4 +97,8 @@ injectGlobal`
     display: flex;
     align-items: center;
   }
+`
+
+export const Layout = styled.div`
+  padding: 1% 4%;
 `

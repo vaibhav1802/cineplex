@@ -1,11 +1,8 @@
 import GridMediaTile from "components/elements/GridMediaTile/GridMediaTile.component"
 import { retrieveDataFromSessionStorage } from "utilities/dataPersistenceInSession"
 import { useEffect, useState } from "react"
-import styled from "styled-components"
+import { Layout } from "styles/global"
 
-const MyListWrapper = styled.div`
-  padding: 1% 4%;
-`
 const MyList = () => {
   const [myListCollection, setMediaListCollection] = useState([])
   useEffect(() => {
@@ -15,13 +12,13 @@ const MyList = () => {
     }
   }, [])
   return (
-    <MyListWrapper>
+    <Layout>
       {myListCollection?.length > 0 && <h3>Your list</h3>}
       <GridMediaTile
         mediaCollectionData={myListCollection}
         customMessage={"Your list is empty."}
       />
-    </MyListWrapper>
+    </Layout>
   )
 }
 

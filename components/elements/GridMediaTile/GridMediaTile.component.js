@@ -2,7 +2,12 @@ import * as Styled from "./GridMediaTile.styled"
 import Link from "next/link"
 
 const GridMediaTile = (props) => {
-  const { mediaCollectionData, mediaType, customMessage } = props
+  const {
+    mediaCollectionData,
+    mediaType,
+    customMessage,
+    readMediaFromResult
+  } = props
 
   return (
     <Styled.GridMediaTileContainer>
@@ -11,12 +16,22 @@ const GridMediaTile = (props) => {
           <Styled.MediaTile key={index}>
             <Link
               href={`/[mediaType]/[mediaid]`}
-              as={`/${mediaItem.mediaType || mediaType}/${mediaItem.id}`}
+              as={
+                readMediaFromResult
+                  ? `${mediaItem.media_type}/${mediaItem.id}`
+                  : `/${mediaItem.mediaType || mediaType}/${mediaItem.id}`
+              }
             >
-              <img
-                src={`https://image.tmdb.org/t/p/w200/${mediaItem.poster_path}`}
-                alt={mediaItem.title}
-              />
+              {mediaItem.poster_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w200/${mediaItem.poster_path}`}
+                  alt={mediaItem.title || mediaItem.name}
+                />
+              ) : (
+                <Styled.EmptyPoster>
+                  No poster available for {mediaItem.title || mediaItem.name}
+                </Styled.EmptyPoster>
+              )}
             </Link>
           </Styled.MediaTile>
         ))}

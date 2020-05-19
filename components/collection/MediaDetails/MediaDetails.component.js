@@ -101,11 +101,15 @@ const MediaDetails = (props) => {
         <title>CINEPLEX DETAILS PAGE</title>
       </Head>
       <Styled.MediaTopContainer>
-        <Styled.MediaPoster
-          backgroundImage={`https://image.tmdb.org/t/p/w1280/${
-            backdrop_path || poster_path
-          }`}
-        ></Styled.MediaPoster>
+        {!isTrailerDisplayed && (
+          <Styled.MediaPoster
+            backgroundImage={`https://image.tmdb.org/t/p/w1280/${
+              backdrop_path || poster_path
+            }`}
+          ></Styled.MediaPoster>
+        )}
+
+        {isTrailerDisplayed && renderTrailerVideo(mediaVideos[0])}
       </Styled.MediaTopContainer>
       <Styled.MediaInfo>
         <Styled.MediaOverView>
@@ -133,8 +137,6 @@ const MediaDetails = (props) => {
               {isMediaItemAddedInList ? "Remove from List" : "Add to List"}
             </Button>
           </Styled.MediaDetailsBtnWrapper>
-
-          {isTrailerDisplayed && renderTrailerVideo(mediaVideos[0])}
         </Styled.MediaOverView>
         <Styled.MediaMoreInfo>
           {vote_average > 0 && <span>Rating: {vote_average}</span>}

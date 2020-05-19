@@ -56,7 +56,6 @@ export default class Storefront extends React.PureComponent {
         <Head>
           <title>CINEPLEX STOREFRONT</title>
         </Head>
-
         <SplashPageWrapper>
           {/* Featured Carousel Collection */}
           {topRatedCollection && topRatedCollection.length > 0 && (
