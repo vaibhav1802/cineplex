@@ -16,6 +16,8 @@ export const Button = styled.button`
   cursor: pointer;
   position: relative;
   justify-content: space-between;
+  background: #fff;
+  color: #000;
 
   &:disabled {
     cursor: default;
