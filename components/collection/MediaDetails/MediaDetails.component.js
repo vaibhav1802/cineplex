@@ -67,7 +67,10 @@ const MediaDetails = (props) => {
     </Styled.OtherSeasons>
   )
 
-  const onClickTrailerBtn = () => displayTrailer(!isTrailerDisplayed)
+  const onClickTrailerBtn = () => {
+    displayTrailer(!isTrailerDisplayed)
+    window.scrollTo(0, 0)
+  }
 
   const renderTrailerVideo = (mediaVideo) => (
     <Styled.TrailerWrapper>
