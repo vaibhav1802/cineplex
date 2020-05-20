@@ -26,7 +26,7 @@ const InputSearchBar = (props) => {
         onChange={(e) => onChangeSearchInput(e)}
         type="text"
         innerRef={inputRef}
-        placeholder="Titles"
+        placeholder="Search Titles"
         maxLength={80}
         value={inputValue}
       ></Styled.TextInput>

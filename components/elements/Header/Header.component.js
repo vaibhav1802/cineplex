@@ -6,12 +6,12 @@ import { useState, useRef } from "react"
 const Header = (props) => {
   const { inputValue, onChangeSearchInput, onIconCloseClick } = props
   const [isInputFieldShown, showInputField] = useState(false)
-  const inputRef = useRef()
+  const inputRefNonMobile = useRef()
 
   const onSearchIconClick = () => {
     if (inputValue === "") {
       showInputField(!isInputFieldShown)
-      inputRef?.current?.focus()
+      inputRefNonMobile?.current?.focus()
     }
   }
   return (
@@ -42,7 +42,7 @@ const Header = (props) => {
             isInputFieldShown={isInputFieldShown}
             onChangeSearchInput={onChangeSearchInput}
             onIconCloseClick={onIconCloseClick}
-            inputRef={inputRef}
+            inputRef={inputRefNonMobile}
           />
         </Styled.InputSearchNonMobile>
       </Styled.HeaderWrapper>
@@ -55,7 +55,6 @@ const Header = (props) => {
           isInputFieldShown={isInputFieldShown}
           onChangeSearchInput={onChangeSearchInput}
           onIconCloseClick={onIconCloseClick}
-          inputRef={inputRef}
         />
       </Styled.InputSearchMobile>
     </>
