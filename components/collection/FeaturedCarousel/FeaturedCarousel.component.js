@@ -26,6 +26,7 @@ const getParamForSlider = () => {
 
 const FeaturedCarousel = (props) => {
   const { results, type } = props
+
   return (
     <Styled.FeaturedCarouselWrapper>
       <Swiper {...getParamForSlider()}>
@@ -34,7 +35,7 @@ const FeaturedCarousel = (props) => {
           results.map((mediaItem, index) => (
             <Styled.FeaturedItem key={index}>
               <Styled.FeaturedImage
-                backgroundImage={`https://image.tmdb.org/t/p/w1280/${mediaItem.poster_path}`}
+                backgroundImage={`https://image.tmdb.org/t/p/w1280/${mediaItem.backdrop_path}`}
               ></Styled.FeaturedImage>
               <Styled.FeatureMediaInfo>
                 <h2>{mediaItem.title}</h2>

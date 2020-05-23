@@ -16,7 +16,7 @@ export const FeaturedItem = styled.div`
 `
 export const FeaturedImage = styled.div`
   width: 100%;
-  height: 56.25vw;
+  height: 40vw;
   z-index: 0;
   top: 0;
   background: ${(props) =>
